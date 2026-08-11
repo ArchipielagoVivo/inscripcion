@@ -190,16 +190,25 @@
           Archipiélago Vivo.
         </p>
 
-        <div class="form-container">
+        <div
+          class="form-container"
+          id="form-embed"
+          data-form-src="https://docs.google.com/forms/d/e/1FAIpQLScExqptQuKEPJX3u2EZAtmUnHtwppefaBRjv9bU-24H-gaf2w/viewform?embedded=true"
+        ></div>
 
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScExqptQuKEPJX3u2EZAtmUnHtwppefaBRjv9bU-24H-gaf2w/viewform?embedded=true"
-            title="Formulario de inscripción de Archipiélago Vivo"
-            loading="lazy"
+        <div class="form-mobile-cta">
+          <p>
+            En móvil, el formulario se abre directamente para facilitar
+            la lectura y la navegación.
+          </p>
+          <a
+            class="button button-primary"
+            href="https://forms.gle/5ynUxUWBNJy5okgF9"
+            target="_blank"
+            rel="noopener"
           >
-            Cargando formulario…
-          </iframe>
-
+            Abrir formulario de inscripción
+          </a>
         </div>
 
         <p class="form-external-link">
@@ -342,6 +351,34 @@
       );
 
     });
+  </script>
+
+
+  <script>
+    (() => {
+      const container = document.getElementById('form-embed');
+      const desktopQuery = window.matchMedia('(min-width: 721px)');
+
+      if (!container) return;
+
+      const syncFormEmbed = () => {
+        if (desktopQuery.matches) {
+          if (!container.querySelector('iframe')) {
+            const iframe = document.createElement('iframe');
+            iframe.src = container.dataset.formSrc;
+            iframe.title = 'Formulario de inscripción de Archipiélago Vivo';
+            iframe.loading = 'lazy';
+            iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+            container.appendChild(iframe);
+          }
+        } else {
+          container.replaceChildren();
+        }
+      };
+
+      syncFormEmbed();
+      desktopQuery.addEventListener('change', syncFormEmbed);
+    })();
   </script>
 
 </body>
