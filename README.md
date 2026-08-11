@@ -40,3 +40,12 @@ inscripcion.archipielagovivo.org
 │
 └── Google Forms
     └── Registro de personas, proyectos e iniciativas
+
+
+## Navegación y analítica
+
+La cabecera y el pie se mantienen alineados con `archipielagovivo.org`, incluyendo Inscripción, TV, Comunidad y las redes sociales confirmadas.
+
+`analytics.js` mantiene una `av_session` efímera entre el dominio principal, Inscripción y TV sin cookies ni almacenamiento persistente para analítica. La portada de este subdominio se registra como `/@inscripcion/`.
+
+La Comunidad de WhatsApp abre en una pestaña nueva y, al ser un destino externo, no recibe `av_session` ni parámetros internos de seguimiento.
